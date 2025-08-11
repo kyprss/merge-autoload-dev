@@ -1,0 +1,23 @@
+{
+  "name": "kyprss/merge-autoload-dev",
+  "description": "Composer plugin to merge autoload-dev settings from local package composer.json to root composer.json",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "composer-plugin-api": "^2.0"
+  },
+  "require-dev": {
+    "composer/composer": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kyprss\\MergeAutoloadDev\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "Kyprss\\MergeAutoloadDev\\Plugin"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
