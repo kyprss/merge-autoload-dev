@@ -69,11 +69,11 @@ final readonly class MergeAutoloadDevAction
                 foreach ($jsonData['autoload-dev']['psr-4'] as $namespace => $path) {
                     if (is_array($path)) {
                         $packagesAutoloadDev['psr-4'][$namespace] = array_map(
-                            fn (string $p): string => "{$packagePath}/".mb_ltrim($p, '/'),
+                            fn (string $p): string => "{$packagePath}/".ltrim($p, '/'),
                             $path
                         );
                     } else {
-                        $packagesAutoloadDev['psr-4'][$namespace] = "{$packagePath}/".mb_ltrim($path, '/');
+                        $packagesAutoloadDev['psr-4'][$namespace] = "{$packagePath}/".ltrim($path, '/');
                     }
                 }
             }
@@ -83,11 +83,11 @@ final readonly class MergeAutoloadDevAction
                 foreach ($jsonData['autoload-dev']['psr-0'] as $namespace => $path) {
                     if (is_array($path)) {
                         $packagesAutoloadDev['psr-0'][$namespace] = array_map(
-                            fn (string $p): string => "{$packagePath}/".mb_ltrim($p, '/'),
+                            fn (string $p): string => "{$packagePath}/".ltrim($p, '/'),
                             $path
                         );
                     } else {
-                        $packagesAutoloadDev['psr-0'][$namespace] = "{$packagePath}/".mb_ltrim($path, '/');
+                        $packagesAutoloadDev['psr-0'][$namespace] = "{$packagePath}/".ltrim($path, '/');
                     }
                 }
             }
@@ -95,7 +95,7 @@ final readonly class MergeAutoloadDevAction
             // classmap
             if (isset($jsonData['autoload-dev']['classmap'])) {
                 foreach ($jsonData['autoload-dev']['classmap'] as $path) {
-                    $packagesAutoloadDev['classmap'][] = "{$packagePath}/".mb_ltrim($path, '/');
+                    $packagesAutoloadDev['classmap'][] = "{$packagePath}/".ltrim($path, '/');
                 }
             }
 
