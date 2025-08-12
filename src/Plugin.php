@@ -10,6 +10,7 @@ use Composer\IO\IOInterface;
 use Composer\Plugin\PluginEvents;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\ScriptEvents;
+use Composer\Installer\PackageEvents;
 use Kyprss\MergeAutoloadDev\Actions\MergeAutoloadDevAction;
 
 final class Plugin implements EventSubscriberInterface, PluginInterface
@@ -26,6 +27,7 @@ final class Plugin implements EventSubscriberInterface, PluginInterface
     {
         return [
             PluginEvents::INIT => ['onInit', self::PRIORITY],
+            PackageEvents::POST_PACKAGE_INSTALL => ['mergeFiles', self::PRIORITY],
             ScriptEvents::POST_INSTALL_CMD => ['mergeFiles', self::PRIORITY],
             ScriptEvents::POST_UPDATE_CMD => ['mergeFiles', self::PRIORITY],
             ScriptEvents::PRE_AUTOLOAD_DUMP => ['mergeFiles', self::PRIORITY],
